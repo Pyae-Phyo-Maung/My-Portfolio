@@ -13,6 +13,8 @@
             font-family: 'Space Mono', monospace; /* Robotic font */
             scroll-behavior: smooth;
             animation: fadeIn 1s ease-out forwards; /* Global fade-in for body */
+            background-image: radial-gradient(circle at center, #1a202c 0%, #111827 100%); /* Subtle dark gradient */
+            overflow-y: auto; /* Changed to auto to show scrollbar when needed */
         }
         /* Custom scrollbar for a cleaner look */
         ::-webkit-scrollbar {
@@ -47,8 +49,8 @@
         }
 
         @keyframes pulseGlow {
-            0%, 100% { box-shadow: 0 0 0px rgba(96, 165, 250, 0.7); }
-            50% { box-shadow: 0 0 15px rgba(96, 165, 250, 0.9); }
+            0%, 100% { box-shadow: 0 0 5px rgba(96, 165, 250, 0.5), 0 0 10px rgba(96, 165, 250, 0.3); }
+            50% { box-shadow: 0 0 20px rgba(96, 165, 250, 0.9), 0 0 30px rgba(96, 165, 250, 0.6); }
         }
 
         /* Apply animations with delays */
@@ -65,13 +67,32 @@
 
         /* Hover effects for cards */
         .card-hover-effect:hover {
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
+            transform: translateY(-8px) scale(1.03); /* More pronounced lift */
+            box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.4), 0 6px 10px -3px rgba(0, 0, 0, 0.2);
+            border-color: #60a5fa; /* Cyan border on hover */
         }
 
         /* Specific background for project cards */
         .bg-gray-850 {
             background-color: #2a3442; /* A slightly lighter dark gray for distinction */
+        }
+
+        /* Button specific styles */
+        .btn-primary {
+            background-image: linear-gradient(to right, #06b6d4, #3b82f6); /* Gradient background */
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(6, 182, 212, 0.4);
+        }
+        .btn-primary:hover {
+            background-image: linear-gradient(to right, #3b82f6, #06b6d4);
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.6);
+        }
+
+        /* Input focus glow */
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #60a5fa;
+            box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.5);
         }
     </style>
 </head>
@@ -95,12 +116,12 @@
         <div class="container mx-auto flex flex-col md:flex-row items-center justify-center px-4">
             <div class="md:w-1/3 flex justify-center mb-8 md:mb-0 opacity-0 animate-slide-in-left hero-image">
                 <!-- Placeholder image for profile picture -->
-                <img src="https://placehold.co/200x200/1F2937/60A5FA?text=ACCOUNTANT+UNIT" alt="Profile Picture" class="rounded-full border-4 border-cyan-500 shadow-xl w-48 h-48 object-cover">
+                <img src="https://placehold.co/200x200/1F2937/60A5FA?text=ACCOUNTANT+UNIT" alt="Profile Picture" class="rounded-full border-4 border-cyan-500 shadow-xl w-48 h-48 object-cover animate-pulse-glow">
             </div>
             <div class="md:w-2/3 text-center md:text-left">
                 <h1 class="text-5xl font-extrabold leading-tight mb-4 opacity-0 animate-slide-in-right hero-heading">INITIATING... I AM <span class="text-lime-400">YOUR NAME</span></h1>
                 <p class="text-2xl font-light mb-6 opacity-0 animate-slide-in-right hero-subheading">A JUNIOR ACCOUNTING UNIT PROCESSING FINANCIAL DATA WITH PRECISION.</p>
-                <a href="#projects" class="inline-block bg-cyan-500 text-gray-900 px-8 py-3 rounded-md text-lg font-semibold hover:bg-cyan-400 transition duration-300 shadow-md transform hover:scale-105 animate-pulse-glow opacity-0 hero-button">ACCESS CASE FILES &rarr;</a>
+                <a href="#projects" class="inline-block btn-primary text-gray-900 px-8 py-3 rounded-md text-lg font-semibold shadow-md transform hover:scale-105 opacity-0 hero-button">ACCESS CASE FILES &rarr;</a>
             </div>
         </div>
     </header>
@@ -245,18 +266,18 @@
                 <form action="#" method="POST" class="space-y-6">
                     <div>
                         <label for="name" class="block text-sm font-medium text-gray-300 mb-1">UNIT IDENTIFIER</label>
-                        <input type="text" id="name" name="name" class="mt-1 block w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:text-sm text-gray-100 placeholder-gray-400" placeholder="YOUR NAME" required>
+                        <input type="text" id="name" name="name" class="mt-1 block w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md shadow-sm text-gray-100 placeholder-gray-400" placeholder="YOUR NAME" required>
                     </div>
                     <div>
                         <label for="email" class="block text-sm font-medium text-gray-300 mb-1">CONTACT ADDRESS</label>
-                        <input type="email" id="email" name="email" class="mt-1 block w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:text-sm text-gray-100 placeholder-gray-400" placeholder="UNIT@EXAMPLE.COM" required>
+                        <input type="email" id="email" name="email" class="mt-1 block w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md shadow-sm text-gray-100 placeholder-gray-400" placeholder="UNIT@EXAMPLE.COM" required>
                     </div>
                     <div>
                         <label for="message" class="block text-sm font-medium text-gray-300 mb-1">TRANSMISSION DATA</label>
-                        <textarea id="message" name="message" rows="5" class="mt-1 block w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:text-sm text-gray-100 placeholder-gray-400" placeholder="YOUR MESSAGE..." required></textarea>
+                        <textarea id="message" name="message" rows="5" class="mt-1 block w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md shadow-sm text-gray-100 placeholder-gray-400" placeholder="YOUR MESSAGE..." required></textarea>
                     </div>
                     <div class="text-center">
-                        <button type="submit" class="inline-flex justify-center py-3 px-6 border border-transparent shadow-sm text-base font-medium rounded-md text-gray-900 bg-cyan-500 hover:bg-cyan-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500 transition duration-300 transform hover:scale-105">TRANSMIT DATA</button>
+                        <button type="submit" class="inline-flex justify-center py-3 px-6 border border-transparent btn-primary text-base font-medium rounded-md text-gray-900 shadow-sm transform hover:scale-105">TRANSMIT DATA</button>
                     </div>
                 </form>
             </div>
@@ -273,7 +294,7 @@
                 <a href="https://twitter.com/yourusername" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-cyan-400 transition duration-300">TWITTER</a>
             </div>
         </div>
-    </footer>
+    </footerb>
 
 </body>
 </html>
